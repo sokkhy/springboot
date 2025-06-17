@@ -32,4 +32,8 @@ public class UserService {
     public void deleteUser(Long id) {
         userMapper.deleteById(id);
     }
+
+    public List<User> searchUsersByName(String name) {
+        return userMapper.findByNameContaining(name);
+    }
 }

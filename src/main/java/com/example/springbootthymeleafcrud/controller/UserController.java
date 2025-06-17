@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
     @Autowired
@@ -15,8 +17,22 @@ public class UserController {
 
     @GetMapping("/")
     public String showUsers(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
+        // The initial page load will not fetch data here.
+        // Data will be fetched by JavaScript after the page loads.
         return "index";
+    }
+
+    @GetMapping("/users")
+    @ResponseBody
+    public List<User> getAllUsersJson() {
+        return userService.getAllUsers();
+    }
+
+    @PostMapping("/users/search")
+    @ResponseBody
+    public List<User> searchUsers(@RequestBody User searchUser) {
+        // Assuming searchUser only contains the 'name' property for searching
+        return userService.searchUsersByName(searchUser.getName());
     }
 
     @PostMapping("/users")
