@@ -1,6 +1,7 @@
 package com.example.springbootthymeleafcrud.controller;
 
 import com.example.springbootthymeleafcrud.model.User;
+import com.example.springbootthymeleafcrud.model.UserPage;
 import com.example.springbootthymeleafcrud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,15 +25,13 @@ public class UserController {
 
     @GetMapping("/users")
     @ResponseBody
-    public List<User> getAllUsersJson() {
-        return userService.getAllUsers();
-    }
-
-    @PostMapping("/users/search")
-    @ResponseBody
-    public List<User> searchUsers(@RequestBody User searchUser) {
-        // Assuming searchUser only contains the 'name' property for searching
-        return userService.searchUsersByName(searchUser.getName());
+    public UserPage getPaginatedUsersJson(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDirection,
+            @RequestParam(required = false) String name) {
+        return userService.getPaginatedAndSortedUsers(page, size, sortBy, sortDirection, name);
     }
 
     @PostMapping("/users")

@@ -1,4 +1,5 @@
 /Users/thepike/springboot/src/main/java/com/example/springbootthymeleafcrud/controller/UserController.java
+/Users/thepike/springboot/src/main/java/com/example/springbootthymeleafcrud/model/UserPage.java
 /Users/thepike/springboot/src/main/java/com/example/springbootthymeleafcrud/service/UserService.java
 /Users/thepike/springboot/src/main/java/com/example/springbootthymeleafcrud/repository/UserMapper.java
 /Users/thepike/springboot/src/main/java/com/example/springbootthymeleafcrud/SpringBootThymeleafCrudApplication.java

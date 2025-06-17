@@ -24,4 +24,16 @@ public interface UserMapper {
 
     @Select("SELECT * FROM users WHERE name LIKE CONCAT('%', #{name}, '%')")
     List<User> findByNameContaining(String name);
+
+    @Select("SELECT * FROM users WHERE name LIKE CONCAT('%', #{name}, '%') ORDER BY ${sortBy} ${sortDirection} LIMIT #{pageSize} OFFSET #{offset}")
+    List<User> findPaginatedAndSortedByName(@Param("name") String name, @Param("sortBy") String sortBy, @Param("sortDirection") String sortDirection, @Param("pageSize") int pageSize, @Param("offset") int offset);
+
+    @Select("SELECT COUNT(*) FROM users WHERE name LIKE CONCAT('%', #{name}, '%')")
+    long countByName(@Param("name") String name);
+
+    @Select("SELECT * FROM users ORDER BY ${sortBy} ${sortDirection} LIMIT #{pageSize} OFFSET #{offset}")
+    List<User> findPaginatedAndSortedAll(@Param("sortBy") String sortBy, @Param("sortDirection") String sortDirection, @Param("pageSize") int pageSize, @Param("offset") int offset);
+
+    @Select("SELECT COUNT(*) FROM users")
+    long countAll();
 }

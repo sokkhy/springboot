@@ -1,5 +1,6 @@
 com/example/springbootthymeleafcrud/controller/UserController.class
 com/example/springbootthymeleafcrud/model/User.class
 com/example/springbootthymeleafcrud/SpringBootThymeleafCrudApplication.class
+com/example/springbootthymeleafcrud/model/UserPage.class
 com/example/springbootthymeleafcrud/repository/UserMapper.class
 com/example/springbootthymeleafcrud/service/UserService.class
